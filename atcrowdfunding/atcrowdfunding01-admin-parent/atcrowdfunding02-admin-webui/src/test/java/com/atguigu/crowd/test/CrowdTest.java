@@ -3,6 +3,7 @@ package com.atguigu.crowd.test;
 
 import com.atguigu.crowd.entity.Admin;
 import com.atguigu.crowd.mapper.AdminMapper;
+import com.atguigu.crowd.service.api.AdminService;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.sql.DataSource;
@@ -16,7 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 // 在类上标记必要的注解，Spring整合Junit
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-persist-mybatis.xml")
+@ContextConfiguration(locations = {"classpath:spring-persist-tx.xml", "classpath:spring-persist-mybatis.xml"})
 public class CrowdTest {
 
   @Autowired
@@ -24,6 +25,9 @@ public class CrowdTest {
 
   @Autowired
   private AdminMapper adminMapper;
+
+  @Autowired
+  private AdminService adminService;
 
   @Test
   public void testConnection() throws SQLException {
@@ -55,6 +59,13 @@ public class CrowdTest {
 
     logger.error("Hello, I am error level!");
 
+  }
+
+  @Test
+  public void testTx() {
+    Admin admin;
+    admin = new Admin(null,"Jerry","123456","杰瑞","jerry@qq.com",null);
+    adminService.saveAdmin(admin);
   }
 
 }
