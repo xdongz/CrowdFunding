@@ -55,7 +55,9 @@
   <servlet-mapping>
     <!-- DispatcherServlet 映射的 URL 地址 -->
     <servlet-name>springDispatcherServlet</servlet-name>
-    <url-pattern>/</url-pattern><!--拦截所有请求-->
+<!--    <url-pattern>/</url-pattern>&lt;!&ndash;拦截所有请求&ndash;&gt;-->
+    <url-pattern>*.html</url-pattern>
+    <url-pattern>*.json</url-pattern>
     <!--方式二
     <url-pattern>*.html</url-pattern>
     <url-pattern>*.json</url-pattern>

@@ -6,5 +6,7 @@
 </head>
 <body>
     <h1>Success</h1>
+
+    ${requestScope.adminList}
 </body>
 </html>
